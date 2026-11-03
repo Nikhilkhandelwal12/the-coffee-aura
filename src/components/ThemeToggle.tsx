@@ -1,0 +1,3 @@
+'use client';
+import {useEffect,useState} from 'react';
+export default function ThemeToggle(){const [dark,setDark]=useState(false);useEffect(()=>{const saved=localStorage.getItem('aura-theme');const initial=saved?saved==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;setDark(initial);document.documentElement.classList.toggle('dark',initial)},[]);function toggle(){const next=!dark;setDark(next);document.documentElement.classList.toggle('dark',next);localStorage.setItem('aura-theme',next?'dark':'light')}return <button aria-label="Toggle theme" onClick={toggle} className="rounded-full border border-[#b87943] px-3 py-2 text-sm">{dark?'☀ Light':'☾ Dark'}</button>}
